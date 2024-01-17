@@ -1,0 +1,16 @@
+name: first workflow in the minder project
+
+on: workflow_dispatch
+
+jobs:
+  
+  first-job-id:
+    name: first-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: print greeting
+        run: echo "hello world"
+      - name: print goodbye
+        run: echo "goodbye!"
+    
+
