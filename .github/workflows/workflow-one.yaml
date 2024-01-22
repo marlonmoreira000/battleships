@@ -1,16 +1,23 @@
-name: first workflow in the minder project
+name: build-test-deploy-workflow
 
 on: workflow_dispatch
 
 jobs:
-  
-  first-job-id:
-    name: first-job
+  build-step:
+    name: build
     runs-on: ubuntu-latest
     steps:
-      - name: print greeting
-        run: echo "hello world"
-      - name: print goodbye
-        run: echo "goodbye!"
-    
-
+      - name: print message
+        run: echo "building..."
+  test-step:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: echo "testing..."
+  deploy-step:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        run: echo "deploying..."
