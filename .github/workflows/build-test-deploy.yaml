@@ -3,20 +3,22 @@ name: build-test-deploy-workflow
 on: workflow_dispatch
 
 jobs:
-  build-step:
+  build-job:
     name: build
     runs-on: ubuntu-latest
     steps:
       - name: print message
         run: echo "building..."
-  test-step:
+  test-job:
     name: test
+    needs: build-job
     runs-on: ubuntu-latest
     steps:
       - name: test
         run: echo "testing..."
-  deploy-step:
+  deploy-job:
     name: deploy
+    needs: test-job
     runs-on: ubuntu-latest
     steps:
       - name: deploy
