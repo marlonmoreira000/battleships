@@ -5,10 +5,14 @@ on: workflow_dispatch
 jobs:
   build-job:
     name: build
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: print message
-        run: echo "building..."
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Run ls
+        run: ls -la
   test-job:
     name: test
     needs: build-job
