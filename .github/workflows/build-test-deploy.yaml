@@ -5,14 +5,16 @@ on: workflow_dispatch
 jobs:
   build-job:
     name: build
-
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
+      - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Check Docker Version
+      - name: Check Docker version
         run: docker version
+      - name: Build Docker image
+        run: docker image build --tag marlonmoreira/battleships:1.0 .
+      - name: List all images
+        run: docker image ls
   test-job:
     name: test
     needs: build-job
