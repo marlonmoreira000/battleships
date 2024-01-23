@@ -11,8 +11,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Run ls
-        run: ls -la
+      - name: Check Docker Version
+        run: docker version
   test-job:
     name: test
     needs: build-job
