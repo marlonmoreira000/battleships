@@ -12,9 +12,15 @@ jobs:
       - name: Check Docker version
         run: docker version
       - name: Build Docker image
-        run: docker image build --tag marlonmoreira/battleships:1.0 .
+        run: docker image build --tag marlonmoreira/battleships:latest .
       - name: List all images
         run: docker image ls
+      - name: Log into DockerHub
+        run: docker login -u marlonmoreira -p ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Push image to DockerHub
+        run: docker image push marlonmoreira/battleships:latest
+      - name: Logout of DockerHub
+        run: docker logout
   test-job:
     name: test
     needs: build-job
